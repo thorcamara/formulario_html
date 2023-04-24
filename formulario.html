@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>	Cadastro</title>
+	</head>
+<style>
+	h1{
+	color: White;
+	background-color: SandyBrown;
+	font-family: 'Lobster', cursive;
+	margin-top: -10px;
+	margin-left: -10px;
+	margin-right: -10px;
+    	padding: 20px 20px 20px 40px;
+	}
+	h2{
+	font-family: 'Lobster', cursive;
+	font-size: 30px;
+	}
+	p{
+	font-size: 17px;
+	}
+	label{
+	font-size: 20px;
+	display: inline-block;
+	}
+	input[type=text]{
+	display: inline-block;
+	width: 50%;
+	height: 25px;
+	border: 2px solid black;
+	}
+	input[type=password]{
+	display: inline-block;
+	width: 50%;
+	height: 25px;
+	border: 2px solid black;
+	}
+	button{
+	background-color: Lightgray;
+	border: none;
+	margin-left: 200px;
+	width: 10%;
+	height: 40px;
+	border: 2px solid black;
+	}
+	button:hover{
+	background-color: gray;
+	}
+</style>
+	<body>
+	<h1> TecSul </h1>
+	<h2> Cadastro </h2>
+	<form name="dados" onSubmit="return validar();">
+	<label for="nome">Nome Completo: </label>
+	<br>
+	<input type="text" id="tx_nome" name="tx_nome" placeholder="Digite seu nome">
+	<br>
+	<br>
+	<label for="cpf">CPF: </label>
+	<br>
+	<input type="text" id="tx_cpf" name="tx_cpf" placeholder="Digite seu CPF">
+	<br>
+	<br>
+	<label for="idade">Idade: </label>
+	<br>
+	<input type="text" id="tx_idade" name="tx_idade" placeholder="Digite sua Idade">
+	<br>
+	<br>
+	<label for="telefone">Telefone: </label>
+	<br>
+	<input type="text" id="tx_telefone" name="tx_telefone" placeholder="Digite seu Telefone">
+	<br>
+	<br>
+	<label for="data_nascimento">Data de nascimento: </label>
+	<br>
+	<input type="text" id="tx_data_nascimento" name="tx_data_nascimento" placeholder="Digite sua Data de Nascimento">
+	<br>
+	<br>
+	<label for="email">E-mail: </label>
+	<br>
+	<input type="text" id="tx_email" name="tx_email" placeholder="Digite seu E-mail">
+	<br>
+	<br>
+	<label for="senha">Senha:  </label>
+	<br>
+	<input type="password" id="tx_senha" name="tx_senha" placeholder="Digite sua Senha">
+	<br>
+	<br>
+	<label for="senha_confirmacao">Confirme Senha:  </label>
+	<br>
+	<input type="password" id="tx_senha_confirmacao" name="tx_senha_confirmacao" placeholder="Confirme sua senha">
+	<br>
+	<br>
+	<button type="button" onclick="apagar()">
+	Apagar tudo
+	</button>
+	<button type="button" onclick="validar()">
+	Cadastrar
+	</button>
+	</form>
+	<script>
+	function validar(){
+	
+
+	if (document.dados.tx_nome.value == "" || document.dados.tx_nome.value.length < 8){
+
+		alert("Preencha campo NOME corretamente! Min: 8 caracteres");
+		tx_nome.focus();
+		return false
+		}
+	
+	if (document.dados.tx_cpf.value == "" || document.dados.tx_cpf.value.length < 11){
+	
+		alert("Preencha campo CPF corretamente! Obs: 11 numeros");
+		tx_cpf.focus();
+		return false
+		}
+
+	if (document.dados.tx_idade.value == ""){
+	
+		alert("Preencha campo IDADE corretamente!");
+		tx_idade.focus();
+		return false
+		} 
+
+	if (document.dados.tx_telefone.value == "" || document.dados.tx_telefone.value.length < 11){
+	
+		alert("Preencha campo TELEFONE corretamente! Obs: 11 numeros");
+		tx_telefone.focus();
+		return false
+		}
+
+	if (document.dados.tx_data_nascimento.value == "" || document.dados.tx_data_nascimento.value.length < 10){
+	
+		alert("Preencha campo DATA DE NASCIMENTO corretamente! Ex: XX/XX/XXXX");
+		tx_data_nascimento.focus();
+		return false
+		}
+
+	if( document.dados.tx_email.value=="" || document.dados.tx_email.value.indexOf('@')==-1 || document.dados.tx_email.value.indexOf('.com')==-1 )
+		{
+		alert( "Preencha campo E-MAIL corretamente! Ex: XXXXXXXXXXX@XXXXX.com" );
+		document.dados.tx_email.focus();
+		return false;
+		}
+	
+	if (document.dados.tx_senha.value == ""){
+	
+		alert("Preencha campo SENHA corretamente! ");
+		tx_senha.focus();
+		return false
+		}
+	
+	if (document.dados.tx_senha_confirmacao.value == "" || document.dados.tx_senha.value != document.dados.tx_senha_confirmacao.value){
+	
+		alert("Preencha campo SENHA corretamente! As senhas devem coincidir!");
+		tx_senha_confirmacao.focus();
+		return false
+		}
+	
+	apagar();
+	alert("Cadastrado com sucesso!")
+	return true;
+
+	}
+	function apagar(){
+		
+		document.dados.reset();
+	}
+	</script>
+	</body>
+</html>
